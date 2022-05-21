@@ -23,4 +23,11 @@ public class StudentService {
             throw new IllegalStateException("Email already exist");
         studentRepository.save(student);
     }
+
+    public void deleteStudent(Long studentId){
+        if(!studentRepository.existsById(studentId))
+            throw new IllegalArgumentException("Student with id " + studentId +  " doesn't exist");
+        studentRepository.deleteById(studentId);
+
+    }
 }
